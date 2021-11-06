@@ -1,4 +1,4 @@
-# ℹ What is snapkup?
+# ❓ What is snapkup?
 
 {% hint style="info" %}
 Snapkup is a simple backup tool that takes snapshots of your filesystem (or the parts that you'll decide), storing them efficiently and conveniently.
