@@ -1,0 +1,34 @@
+# ℹ What is snapkup?
+
+{% hint style="info" %}
+Snapkup is a simple backup tool that takes snapshots of your filesystem (or the parts that you'll decide), storing them efficiently and conveniently.
+{% endhint %}
+
+### Basic workflow
+
+The basic flow to accomplish this can be summed up as:
+
+* You initialize an empty directory that will store the backups
+* You register one or more backup roots, directory or files that will be snapshotted
+* You take one or more snapshots. Snapkup lists all the tree for those roots, taking a copy of the contents
+* You can restore the situation of the roots at any given snapshot
+* Of course, it's possible to list roots and snapshots and delete any of them, and perform all the other admin ops
+
+### Detailed overview (so to speak)
+
+* Built with Go(lang). You get one statically linked binary, and that's all you need.
+* Files are deduplicated: only one copy of a file is stored, across the filesystem and all the snapshots
+* Everything stored on-disk is encrypted, using `XChaCha20Poly1305`
+* Checksums, using authenticated 128-bit `SipHash`, are used to perform deduplication and integrity
+* By default, everything is compressed using `zstd -19`. Incompressible files are stored as not compressed.
+* Small files can be merged in "agglos", to reduce the number of files and make it more sync-friendly (e.g. for Dropbox)
+* Snapkup favors features and code readability over speed. It's not slow, though!
+* All paths are converted to absolute paths, for consistency.
+* Cross-platform portability of backup archives is not a priority, though it should reasonably work.
+
+### Future plans
+
+* Ability to produce all outputs as JSON, for better script-ability
+* Ability to retrieve files from external filesystems, via SSH
+* Ability to back up data that come from the execution of a command (e.g. `crontab -l`)
+* FUSE-mount a snapshot
