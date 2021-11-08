@@ -1,16 +1,20 @@
-# 📖 Init
+# 🔖 init
 
-#### Syntax
+## Syntax
+
+{% hint style="warning" %}
+Please be sure to read the [App-wide args](../app-wide-args.md) page to understand the basics
+{% endhint %}
 
 ```
 snapkup -d somedir init
 ```
 
-#### Aliases
+## Aliases
 
 No aliases for this command.
 
-#### Description
+## Description
 
 Initializes the folder _somedir _so that it can contain the backup files. The folder must be completely empty, not even containing .dotfiles or other hidden files.
 
